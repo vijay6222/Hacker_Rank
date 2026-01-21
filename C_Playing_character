@@ -1,0 +1,24 @@
+#include <stdio.h>
+
+int main() {
+    char ch;
+    char s[100];
+    char sentence[100];
+
+    // Read a single character
+    scanf("%c", &ch);
+
+    // Read a string (without spaces)
+    scanf("%s", s);
+
+    // Read a sentence (with spaces)
+    getchar(); // consume newline left by previous scanf
+    fgets(sentence, sizeof(sentence), stdin);
+
+    // Print outputs
+    printf("%c\n", ch);
+    printf("%s\n", s);
+    printf("%s\n", sentence);
+
+    return 0;
+}
