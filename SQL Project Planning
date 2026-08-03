@@ -1,0 +1,10 @@
+WITH
+    projectstart as (select Start_Date, 
+    row_number() over(order by Start_Date) as vi from Projects
+     where Start_Date not in (select End_Date from Projects)),
+         projectend as (select End_Date, 
+    row_number() over(order by End_Date) as vj from Projects
+     where End_Date not in (select Start_Date from Projects))
+     select s.Start_Date,e.End_Date from projectstart s
+     join projectend e on e.vj=s.vi 
+     ORDER by datediff(e.End_Date,s.Start_Date) ,s.Start_Date
